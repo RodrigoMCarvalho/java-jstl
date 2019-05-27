@@ -34,9 +34,9 @@
 		<c:forEach var="p" items="${produtoList}">
 			<tr id="produto${p.id}">
 				<td>${p.nome}</td>
-				<td>${p.preco}</td>
+				<td><fmt:formatNumber value="${p.preco}" type="currency"/></td>
 				<td>${p.descricao}</td>
-				<td>${p.dataInicioVenda.time}</td>
+				<td><fmt:formatDate value="${p.dataInicioVenda.time}" pattern="dd/MM/yyyy"/></td>
 				
 				<c:if test="${p.usado}">
 					<td>Sim</td>
@@ -49,6 +49,12 @@
 			</tr>
 		</c:forEach>
 	</table>
-	<a href="/produtos/produto/formulario">Adicionar um produto</a>
+	<c:url value="/produto/formulario" var="adicionarForm"/>
+	<a href="${adicionarForm}">Adicionar um produto</a>
+	
+	</br>
+	<c:set var="nome" value="Rodrigo Moreira" />
+	<c:out value="${nome}" />
+	
 </body>
 </html>
